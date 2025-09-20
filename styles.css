@@ -1,0 +1,298 @@
+:root {
+    --color-primary: #0056b3;
+    --color-secondary: #28a745;
+    --color-background: #f8f9fa;
+    --color-surface: #ffffff;
+    --color-text: #343a40;
+    --color-subtext: #6c757d;
+    --color-urgent: #dc3545;
+    --color-normal: #ffc107;
+    --color-follow-up: #17a2b8;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.app-container {
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: var(--color-surface);
+    min-height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Header --- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lang-toggle {
+    background: none;
+    border: 1px solid var(--color-surface);
+    color: var(--color-surface);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- Screen Transitions --- */
+.screen {
+    display: none;
+    padding: 20px;
+    position: relative; /* Needed for back button positioning */
+}
+
+.screen.active {
+    display: block;
+}
+
+/* --- Dashboard --- */
+.stats-bar {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: var(--color-background);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--color-subtext);
+}
+
+.schedule-manager {
+    background-color: var(--color-background);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.schedule-status {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.patient-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+    border-left: 5px solid;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.patient-card:active {
+    transform: scale(0.98);
+}
+
+.patient-card.urgent { border-left-color: var(--color-urgent); }
+.patient-card.normal { border-left-color: var(--color-normal); }
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.patient-village, .patient-symptom {
+    font-size: 14px;
+    color: var(--color-subtext);
+}
+
+.urgency-tag {
+    font-size: 12px;
+    color: var(--color-surface);
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: var(--color-urgent);
+}
+
+.patient-card.normal .urgency-tag { background-color: var(--color-normal); }
+.patient-card.follow-up .urgency-tag { background-color: var(--color-follow-up); }
+
+/* --- Consultation Screen --- */
+#consultation, #group-consultation {
+    padding: 0;
+}
+
+.consult-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+}
+
+.consult-info {
+    padding: 20px;
+}
+
+.consult-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: var(--color-background);
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.action-btn i {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: var(--color-primary);
+}
+
+.consult-controls {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.control-btn {
+    background-color: var(--color-urgent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* --- Group Consultation Screen --- */
+.group-call-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    background-color: black;
+    padding: 5px;
+}
+
+.video-participant {
+    aspect-ratio: 1/1;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+}
+
+/* --- Patient Record --- */
+.record-container {
+    background-color: var(--color-background);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.record-section {
+    margin-bottom: 20px;
+}
+
+.record-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.record-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.record-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.record-list li:last-child {
+    border-bottom: none;
+}

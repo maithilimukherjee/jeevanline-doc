@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeevanLine Doctor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="app-header">
+            <span class="header-title">JeevanLine</span>
+            <div class="header-actions">
+                <button class="lang-toggle" onclick="toggleLanguage()">EN / HI</button>
+            </div>
+        </header>
+
+        <main class="app-content">
+
+            <section id="dashboard" class="screen active">
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Waiting Patients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Group Consults</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">CHW Updates</span>
+                    </div>
+                </div>
+
+                <div class="schedule-manager">
+                    <h2 class="section-title">Schedule Manager 📅</h2>
+                    <div class="schedule-item">
+                        <span>Today, 10:30 AM</span>
+                        <span>Follow-up: <a href="#" onclick="showScreen('patient-record')">Anjali Das</a></span>
+                        <span class="schedule-status">Upcoming</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span>Today, 2:00 PM</span>
+                        <span>Group Consult: Village <a href="#" onclick="showScreen('group-consultation')">Nabha</a></span>
+                        <span class="schedule-status">Upcoming</span>
+                    </div>
+                </div>
+
+                <div class="patient-list">
+                    <h2 class="section-title">Priority Queue</h2>
+                    <div class="patient-card urgent" onclick="showScreen('consultation')">
+                        <div class="card-info">
+                            <span class="patient-name">Ravi Kumar</span>
+                            <span class="patient-village">Palampur</span>
+                            <span class="patient-symptom">Fever, cough</span>
+                        </div>
+                        <span class="urgency-tag">Urgent</span>
+                    </div>
+                    <div class="patient-card normal" onclick="showScreen('consultation')">
+                        <div class="card-info">
+                            <span class="patient-name">Priya Singh</span>
+                            <span class="patient-village">Kharagpur</span>
+                            <span class="patient-symptom">Body ache</span>
+                        </div>
+                        <span class="urgency-tag">Normal</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="consultation" class="screen">
+                <button class="back-btn" onclick="showScreen('dashboard')">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <div class="consult-video">
+                    <div class="video-placeholder">Video Call with Ravi Kumar</div>
+                </div>
+
+                <div class="consult-info">
+                    <h3 class="patient-name">Ravi Kumar</h3>
+                    <div class="symptom-summary">
+                        <h4 class="info-title">Symptom Summary</h4>
+                        <p>Fever (102°F), dry cough, body aches for 3 days.</p>
+                    </div>
+                </div>
+                
+                <div class="consult-actions">
+                    <button class="action-btn">
+                        <i class="material-icons">local_pharmacy</i>
+                        <span>Prescribe</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="material-icons">phone_in_talk</i>
+                        <span>Voice Call</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="material-icons">group_add</i>
+                        <span>Refer to CHW</span>
+                    </button>
+                </div>
+                
+                <div class="consult-controls">
+                    <button class="control-btn end-call">
+                        <i class="material-icons">call_end</i>
+                    </button>
+                </div>
+            </section>
+
+            <section id="group-consultation" class="screen">
+                <button class="back-btn" onclick="showScreen('dashboard')">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <div class="group-call-grid">
+                    <div class="video-participant">
+                        <div class="video-placeholder-small">Patient 1</div>
+                    </div>
+                    <div class="video-participant">
+                        <div class="video-placeholder-small">Patient 2</div>
+                    </div>
+                    <div class="video-participant">
+                        <div class="video-placeholder-small">CHW</div>
+                    </div>
+                    <div class="video-participant">
+                        <div class="video-placeholder-small">You</div>
+                    </div>
+                </div>
+                
+                <div class="consult-info">
+                    <h3 class="patient-name">Group Consult: Village Dhanbad</h3>
+                    <div class="symptom-summary">
+                        <h4 class="info-title">Common Symptoms</h4>
+                        <p>Widespread fever and body aches reported by CHW.</p>
+                    </div>
+                </div>
+                
+                <div class="consult-actions">
+                     <button class="action-btn">
+                        <i class="material-icons">local_pharmacy</i>
+                        <span>Prescribe</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="material-icons">history</i>
+                        <span>End & Log</span>
+                    </button>
+                </div>
+                
+                <div class="consult-controls">
+                    <button class="control-btn end-call">
+                        <i class="material-icons">call_end</i>
+                    </button>
+                </div>
+            </section>
+
+            <section id="patient-record" class="screen">
+                <button class="back-btn" onclick="showScreen('dashboard')">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <h2 class="section-title">Anjali Das's Health Record</h2>
+                <div class="record-container">
+                    <div class="record-section">
+                        <h4>Past Consultations</h4>
+                        <ul class="record-list">
+                            <li><span>20 Sep 2025:</span> Routine follow-up.</li>
+                            <li><span>15 Aug 2025:</span> Allergic reaction.</li>
+                        </ul>
+                    </div>
+                    <div class="record-section">
+                        <h4>Health Journal</h4>
+                        <ul class="record-list">
+                            <li><span>BP:</span> 120/80 mmHg (20 Sep)</li>
+                            <li><span>Sugar:</span> 95 mg/dL (18 Sep)</li>
+                        </ul>
+                    </div>
+                    <div class="record-section">
+                        <h4>Prescriptions</h4>
+                        <ul class="record-list">
+                            <li><span>20 Sep:</span> Paracetamol (for fever)</li>
+                            <li><span>15 Aug:</span> Antihistamine (for allergy)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
